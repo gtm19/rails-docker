@@ -19,9 +19,9 @@ The following will create a boilerplate Rails app, with `simpleform`, `bootstrap
 ```bash
 docker compose run web rails new . \
   --force \
-   --database=postgresql \
-   --webpack \
-   -m https://raw.githubusercontent.com/gtm19/rails-templates/master/devise.rb
+  --database=postgresql \
+  --webpack \
+  -m https://raw.githubusercontent.com/gtm19/rails-templates/master/devise_docker.rb
 ```
 
 ## Rebuilding the image(s)
