@@ -8,8 +8,8 @@ First clone the repo (replacing `YOUR_APP_NAME` with the name of your app), and 
 
 ```bash
 git clone git@github.com:gtm19/rails-docker.git YOUR_APP_NAME
-rm -rf .git
 cd YOUR_APP_NAME
+rm -rf .git
 ```
 
 ## Creating a new app
