@@ -2,6 +2,8 @@ version: "3.9"
 services:
   db:
     image: postgres
+    ports:
+      - 5432:5432
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
@@ -12,6 +14,6 @@ services:
     volumes:
       - .:/app
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - db

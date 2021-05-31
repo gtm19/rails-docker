@@ -14,7 +14,11 @@ RUN apt-get update -qq && apt-get install -y \
 WORKDIR /app
 COPY . /app
 
-RUN bundle install
+# Install Gems
+RUN bundle install --jobs 5
+
+# Install JS packages
+RUN yarn install
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
