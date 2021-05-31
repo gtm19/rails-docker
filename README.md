@@ -20,8 +20,7 @@ The following will create a boilerplate Rails app, with `simpleform`, `bootstrap
 docker compose run web rails new . \
   --force \
   --database=postgresql \
-  --webpack \
-  -m https://raw.githubusercontent.com/gtm19/rails-templates/master/devise_docker.rb
+  --webpack
 ```
 
 ## Rebuilding the image(s)
@@ -32,12 +31,19 @@ Changes to either the `Gemfile` or the `Dockerfile` will require a rebuild. This
 docker compose build
 ```
 
-## Initialising the database volume folder
+## Pointing the Rails app at the Postgres container
 
-The [docker-compose.yml](docker-compose.yml) file mounts a volume for the database from the `tmp/db` directory of the app on the host machine. You _may_ need to create this folder before proceeding.
+Change the `config/database.yml` so it includes this:
 
-```bash
-mkdir tmp/db
+```yml
+# config/database.yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: 5
 ```
 
 ## Running the app
