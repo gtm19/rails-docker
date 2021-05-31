@@ -69,7 +69,7 @@ docker compose up --build
 ## Initialise the database
 
 ```bash
-docker run web rails db:create
+docker compose run web rails db:create
 ```
 
 ## Stopping the app
