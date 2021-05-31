@@ -29,7 +29,7 @@ docker compose run --no-deps web rails new . \
 Changes to either the `Gemfile` or the `Dockerfile` will require a rebuild. This includes the changes which are caused by creating a new app.
 
 ```bash
-docker compose rebuild
+docker compose build
 ```
 
 ## Initialising the database volume folder
