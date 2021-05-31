@@ -2,6 +2,11 @@
 
 This repo contains the boilerplate code required to initialise a Rails app using Docker.
 
+In order for this to be of any use, you will need to have the following installed on your machine:
+
+* [Docker](https://docs.docker.com/get-docker/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
+
 ## Clone this repo
 
 First clone the repo (replacing `YOUR_APP_NAME` with the name of your app), and remove the `git` history.
