@@ -46,6 +46,12 @@ default: &default
   pool: 5
 ```
 
+We also need to create the directory which will be mounted for the `db` service:
+
+```bash
+mkdir tmp/db
+```
+
 ## Running the app
 
 ```bash
