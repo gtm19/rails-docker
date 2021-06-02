@@ -22,7 +22,7 @@ rm -rf .git
 The following will create a boilerplate Rails app, with `simpleform`, `bootstrap`, and `devise` all locked and loaded.
 
 ```bash
-docker compose run web rails new . \
+docker compose run --no-deps web rails new . \
   --force \
   --database=postgresql \
   --webpack
