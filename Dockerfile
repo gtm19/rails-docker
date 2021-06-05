@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.6
 
+ARG app_name
+
 EXPOSE 3000
 
 RUN apt-get update -qq && apt-get install -y \
@@ -11,8 +13,9 @@ RUN apt-get update -qq && apt-get install -y \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && apt-get install -y nodejs yarn
 
-WORKDIR /app
-COPY . /app
+RUN echo "Creating working directory: $app_name"
+WORKDIR /$app_name
+COPY . /$app_name
 
 # Install Gems
 RUN bundle install --jobs 5

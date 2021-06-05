@@ -15,47 +15,35 @@ First clone the repo (replacing `YOUR_APP_NAME` with the name of your app), and 
 git clone git@github.com:gtm19/rails-docker.git YOUR_APP_NAME
 cd YOUR_APP_NAME
 rm -rf .git
-mkdir -p tmp/db
 ```
 
 ## Creating a new app
 
-The following will create a boilerplate Rails app, with `simpleform`, `bootstrap`, and `devise` all locked and loaded.
+The following will create a boilerplate Rails app, with `simpleform`, `bootstrap`, and `devise` all locked and loaded by default.
 
 ```bash
-docker compose run --no-deps web rails new . \
-  --force \
-  --database=postgresql \
-  --webpack
+./init.sh
 ```
+
+You can (optionally) provide a different template as follows:
+
+```bash
+./init.sh --template minimal_docker
+```
+
+The only options at the moment are:
+
+* `minimal_docker`
+* `devise_docker` (default)
+
+See [here](https://github.com/gtm19/rails-templates/) for the source.
 
 ## Rebuilding the image(s)
 
 Changes to either the `Gemfile` or the `Dockerfile` will require a rebuild. This includes the changes which are caused by creating a new app.
 
 ```bash
-docker compose build
-```
-
-## Pointing the Rails app at the Postgres container
-
-Change the `config/database.yml` so it includes this:
-
-```yml
-# config/database.yml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  host: db
-  username: postgres
-  password: password
-  pool: 5
-```
-
-We also need to create the directory which will be mounted for the `db` service:
-
-```bash
-mkdir tmp/db
+docker compose build --build-arg app_name=$NAME
 ```
 
 ## Running the app
@@ -77,13 +65,6 @@ docker compose up --build
 docker compose run web bundle install
 docker compose up --build
 ```
-
-## Initialise the database
-
-```bash
-docker compose run web rails db:create
-```
-
 ## Stopping the app
 
 ```bash
