@@ -15,6 +15,7 @@ First clone the repo (replacing `YOUR_APP_NAME` with the name of your app), and 
 git clone git@github.com:gtm19/rails-docker.git YOUR_APP_NAME
 cd YOUR_APP_NAME
 rm -rf .git
+mkdir -p tmp/db
 ```
 
 ## Creating a new app
