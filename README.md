@@ -25,6 +25,8 @@ The following will create a boilerplate Rails app, with `simpleform`, `bootstrap
 ./init.sh
 ```
 
+### Rails Templates
+
 You can (optionally) provide a different template as follows:
 
 ```bash
@@ -37,6 +39,16 @@ The only options at the moment are:
 * `devise_docker` (default)
 
 See [here](https://github.com/gtm19/rails-templates/) for the source.
+
+### App name
+
+You can optionally choose a name for your app by adding it as an unflagged argument.
+
+By default, it will use the name of the working directory from where `./init.sh` is called.
+
+```bash
+./init.sh my-way-cool-app
+```
 
 ## Rebuilding the image(s)
 
