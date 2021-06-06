@@ -4,6 +4,7 @@ set -e
 NAME=$(basename $(pwd))
 TEMPLATE="devise_docker"
 DOCKER_COMPOSE_VERSION="3.9"
+RAILS_DOCKER_VERSION="0.1"
 
 if [[ "$NAME" != "rails-docker" ]]; then
     echo "Removing git history"
@@ -63,7 +64,9 @@ echo "Creating tmp/db directory"
 mkdir -p tmp/db
 
 echo "Creating rails app"
-docker compose run web rails new . \
+docker compose run \
+  -e RAILS_DOCKER_VERSION=$RAILS_DOCKER_VERSION \
+  web rails new . \
   --force \
   --database=postgresql \
   --webpack \
