@@ -33,6 +33,7 @@ TEMPLATE_FILE="https://raw.githubusercontent.com/gtm19/rails-templates/master/$T
 echo "Creating app with name: $NAME"
 echo "Using template: $TEMPLATE_FILE"
 
+echo "Creating docker-compose.yml file"
 cat > docker-compose.yml <<EOL
 version: "$DOCKER_COMPOSE_VERSION"
 services:
@@ -58,14 +59,15 @@ services:
       - db
 EOL
 
+echo "Creating tmp/db directory"
 mkdir -p tmp/db
 
-docker compose build --build-arg app_name=$NAME
-
+echo "Creating rails app"
 docker compose run web rails new . \
   --force \
   --database=postgresql \
   --webpack \
   -m $TEMPLATE_FILE
 
-docker compose build --build-arg app_name=$NAME
+echo "Rebuilding Docker image(s)"
+docker-compose build
