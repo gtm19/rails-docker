@@ -54,7 +54,7 @@ By default, it will use the name of the working directory from where `./init.sh`
 Changes to either the `Gemfile` or the `Dockerfile` will require a rebuild. This includes the changes which are caused by creating a new app.
 
 ```bash
-docker compose build --build-arg app_name=$NAME
+docker-compose build
 ```
 
 ## Running the app
